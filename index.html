@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - منصة التاريخ</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2c6f7d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #1f4e58;
+        }
+        #registerLink {
+            margin-top: 20px;
+            display: block;
+            text-decoration: none;
+            color: #2c6f7d;
+            font-size: 16px;
+        }
+        #statusMessage {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <input type="text" id="loginUsername" placeholder="اسم المستخدم" required>
+            <input type="password" id="loginPassword" placeholder="كلمة المرور" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+        <a href="register.html" id="registerLink">إنشاء حساب جديد</a>
+        <p id="statusMessage"></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+
+            let storedUser = JSON.parse(localStorage.getItem(username));
+            if (storedUser && storedUser.password === password) {
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("username", username);
+                window.location.href = "منصه.html";
+            } else {
+                document.getElementById("statusMessage").innerText = "اسم المستخدم أو كلمة المرور غير صحيحة.";
+            }
+        });
+    </script>
+</body>
+</html>

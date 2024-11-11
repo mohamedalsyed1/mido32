@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التاريخ - أولى ثانوي</title>
+    <style>
+        /* إعدادات الصفحة العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* رأس الصفحة */
+        header {
+            background-color: #4A90E2; /* اللون الأزرق الفاتح */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 5px solid #357ABD; /* ظل أزرق غامق */
+            flex-shrink: 0;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+
+        /* قائمة التنقل */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            background-color: #357ABD; /* أزرق داكن */
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* خلفية الصفحة الرئيسية */
+        .hero {
+            background-color: #FFB74D; /* لون برتقالي دافئ */
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        section {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            margin-bottom: 20px;
+            color: #FF5755; /* لون برتقالي داكن */
+        }
+
+        h1 {
+            color: #ffffff; /* تحديد لون العنوان الرئيسي */
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #FF5755;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #FF5722; /* تأثير تغيير اللون عند المرور */
+        }
+
+        /* تغيير الألوان للوضع الداكن */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        body.dark-mode header {
+            background-color: #222; /* أزرق داكن جداً */
+        }
+
+        body.dark-mode nav ul {
+            background-color: #1F2A44; /* أزرق داكن جداً */
+        }
+
+        body.dark-mode .hero {
+            background-color: #FF7043; /* اللون البرتقالي الداكن */
+        }
+
+        body.dark-mode section {
+            background-color: #444;
+            color: #ddd;
+        }
+
+        body.dark-mode h2, body.dark-mode h3 {
+            color: #e03f0e;
+        }
+
+        body.dark-mode h1 {
+            color: #e03f0e;
+        }
+
+        /* تصميم زر تبديل الوضع */
+        .color-toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .color-toggle {
+            width: 60px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 30px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .color-toggle .toggle-btn {
+            width: 26px;
+            height: 26px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            transition: transform 0.3s;
+        }
+
+        /* حالة الوضع الداكن */
+        body.dark-mode .color-toggle {
+            background-color: #444;
+        }
+
+        body.dark-mode .color-toggle .toggle-btn {
+            transform: translateX(30px);
+        }
+
+        /* التصميم الاستجابة لجميع الأجهزة */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .hero h2 {
+                font-size: 1.8em;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .hero h2 {
+                font-size: 1.5em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header>
+        <h1>منصة التاريخ - أولى ثانوي</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#courses">الدروس</a></li>
+                <li><a href="#practice">اختبارات</a></li>
+                <li><a href="#resources">المراجع</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- زر تغيير الوضع -->
+    <div class="color-toggle-container" onclick="toggleDarkMode()">
+        <div class="color-toggle">
+            <div class="toggle-btn"></div>
+        </div>
+    </div>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home" class="hero">
+        <h2>مرحباً بكم في منصة التاريخ!</h2>
+        <p>اكتشفوا أفضل الدروس والتمارين التفاعلية لطلاب أولى ثانوي في موضوعات التاريخ.</p>
+        <button onclick="scrollToCourses()">استكشاف الدروس</button>
+    </section>
+
+    <!-- الدروس -->
+    <section id="courses">
+        <h2>دروس التاريخ</h2>
+        <!-- درس التاريخ القديم -->
+        <div class="course">
+            <h3>التاريخ القديم</h3>
+            <p>استكشاف الحضارات القديمة وأثرها على العالم الحديث.</p>
+            <button onclick="alert('ابدأ درس التاريخ القديم')">ابدأ الدرس</button>
+        </div>
+    </section>
+
+    <!-- اختبارات تفاعلية -->
+    <section id="practice">
+        <h2>اختبارات تفاعلية</h2>
+        <div class="quiz">
+            <h3>اختبار التاريخ القديم</h3>
+            <p>اختبر معرفتك بالحضارات القديمة.</p>
+            <button onclick="alert('بدء اختبار التاريخ القديم')">ابدأ الاختبار</button>
+        </div>
+    </section>
+
+    <!-- المراجع -->
+    <section id="resources">
+        <h2>المراجع</h2>
+        <ul>
+            <li><a href="#">كتاب التاريخ - الفصل الأول</a></li>
+            <li><a href="#">مصادر تاريخية موثوقة</a></li>
+        </ul>
+    </section>
+
+    <!-- الذيل -->
+    <footer>
+        <p>&copy; 2024 منصة التاريخ - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        // JavaScript لتبديل الوضع بين الفاتح والداكن
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // JavaScript للانتقال للأقسام
+        function scrollToCourses() {
+            document.getElementById('courses').scrollIntoView({ behavior
+         } )     ({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
